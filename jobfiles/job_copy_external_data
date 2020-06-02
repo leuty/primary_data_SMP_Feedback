@@ -1,0 +1,10 @@
+#!/usr/local/bin/bash -l
+#SBATCH --job-name="copy_ext_data"
+#SBATCH --time=00:10:00
+#SBATCH --partition=xfer
+
+#Prevent harmless error
+module unload xalt
+
+# Run LM in case directory
+ srun -e ${logfiles}/${LM_MODEL}_copy_external_data.err -o ${logfiles}/${LM_MODEL}_copy_external_data.out ${BINDIR}/copy_external_data.sh

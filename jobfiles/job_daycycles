@@ -1,0 +1,19 @@
+#!/usr/local/bin/bash -l
+#SBATCH --job-name="daycycles"
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --partition=normal
+#SBATCH --constraint=gpu
+
+#Load modules
+. /etc/bash.bashrc
+module load daint-gpu
+module load NCO
+module load CDO/1.9.5-CrayIntel-18.08
+
+#Prevent harmless error
+module unload xalt
+
+# Run LM in case directory
+ srun -e ${logfiles}/${LM_MODEL}_daycycles.err -o ${logfiles}/${LM_MODEL}_daycycles.out ${BINDIR}/diurnal_cylces.sh

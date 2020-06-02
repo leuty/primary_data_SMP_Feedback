@@ -1,0 +1,20 @@
+#!/usr/local/bin/bash -l
+#SBATCH --job-name="recycling"
+#SBATCH --time=01:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --partition=normal
+#SBATCH --constraint=gpu
+
+#Load Modules
+. /etc/bash.bashrc
+module load daint-gpu
+module load CDO
+module load NCL/6.4.0
+
+#Prevent harmless error
+module unload xalt
+
+#module purge
+# Run LM in case directory
+ srun -e ${logfiles}/${LM_MODEL}_recycling_rate.err -o ${logfiles}/${LM_MODEL}_recycling_rate.out ${BINDIR}/compute_recycling_rate.sh

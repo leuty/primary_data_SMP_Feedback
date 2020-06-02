@@ -1,0 +1,11 @@
+#!/usr/local/bin/bash -l
+#SBATCH --job-name="copy_data"
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --partition=xfer
+
+#Prevent harmless error
+module unload xalt
+
+# Run LM in case directory
+ srun -e ${logfiles}/${LM_MODEL}_copy_data.err -o ${logfiles}/${LM_MODEL}_copy_data.out ${BINDIR}/copy_data_to_scratch.sh

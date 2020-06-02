@@ -1,0 +1,20 @@
+#!/usr/local/bin/bash -l
+#SBATCH --job-name="histsum"
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --partition=normal
+#SBATCH --constraint=gpu
+
+#Load modules
+. /etc/bash.bashrc
+module load daint-gpu
+module load NCO
+module load CDO
+module load PyExtensions
+
+#Prevent harmless error
+module unload xalt
+
+# Run LM in case directory
+ srun -e ${logfiles}/${LM_MODEL}_histsum.err -o ${logfiles}/${LM_MODEL}_histsum.out ${BINDIR}/histsum.sh
