@@ -1,0 +1,25 @@
+#!/bin/bash -l
+#
+#SBATCH --job-name=put_data
+#SBATCH --output=job.out
+#SBATCH --time=24:00:00
+#SBATCH --ntasks=1
+#SBATCH --partition=xfer
+module unload xalt
+
+mkdir -p output/lm_c output/lm_f output/debug/lm_c output/debug/lm_f
+
+#Output
+rsync -av input_lm_c/1h/lffd2006* output/lm_c/1h/
+rsync -av input_lm_c/24h/lffd2006* output/lm_c/24h/
+rsync -av input_lm_f/1h/lffd2006* output/lm_f/1h/
+rsync -av input_lm_f/24h/lffd2006* output/lm_f/24h/
+
+#Intitial Conditions
+rsync -av input_lm_c/laf2006* output/lm_c/
+rsync -av input_lm_f/laf2006* output/lm_f/
+
+#Debug Output
+rsync -av debug_lm_c/YU* debug_lm_c/job.out output/debug/lm_c/
+rsync -av debug_lm_f/YU* debug_lm_f/job.out output/debug/lm_f/
+

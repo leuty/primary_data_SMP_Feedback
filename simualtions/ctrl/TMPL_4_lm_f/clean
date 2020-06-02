@@ -1,0 +1,7 @@
+#!/bin/bash
+
+\rm -rf YU* OUTPUT fort.* M_* core script_*.grc stdeo_*.grc grc.nqs *.tex
+
+#recreate output dirs
+if [ ! -d output/1h ] ; then mkdir output/1h    ; fi
+if [ ! -d output/24h ] ; then mkdir output/24h ; fi

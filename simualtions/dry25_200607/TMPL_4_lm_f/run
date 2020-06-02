@@ -1,0 +1,437 @@
+#!/bin/bash
+
+# setup defaults
+if [ -z "${NPX_LMF}" ]; then
+  NPX=2
+else
+  NPX=${NPX_LMF}
+fi
+if [ -z "${NPY_LMF}" ]; then
+  NPY=4
+else
+  NPY=${NPY_LMF}
+fi
+if [ -z "${NPIO_LMF}" ]; then
+  NPIO=4
+else
+  NPIO=${NPIO_LMF}
+fi
+if [ -z "${EXE_LMF}" ]; then
+  EXE=lm_f90
+else
+  EXE=${EXE_LMF}
+fi
+if [ -z "$1" ]; then
+  SCHEDULER="SLURM"
+else
+  SCHEDULER="$1"
+fi
+if [ -z "$2" ]; then
+  QUEUE="primary"
+else
+  QUEUE="$2"
+fi
+if [ -z "$3" ]; then
+  ACCOUNT="s83"
+else
+  ACCOUNT="$3"
+fi
+if [ -z "$4" ]; then
+  WAITFORJOB=""
+else
+  WAITFORJOB="$4"
+fi
+if [ -z "$CORES_PER_NODE" ] ; then
+  echo "ERROR: need to specify CORES_PER_NODE"
+  exit 1
+fi
+if [ -z "$TASKS_PER_NODE" ] ; then
+  echo "ERROR: need to specify TASKS_PER_NODE"
+  exit 1
+fi
+HOST=`hostname | sed 's/\..*$//g' | sed 's/[0-9]*$//g'`
+
+# check if running on opcode or dom
+echo "${HOST}" | grep opcode 2>&1 1>/dev/null
+if [ $? -eq 0 ] ; then
+  OPCODE=1
+else
+  OPCODE=0
+fi
+echo "${HOST}" | grep dom 2>&1 1>/dev/null
+if [ $? -eq 0 ] ; then
+  DOM=1
+else
+  DOM=0
+fi
+
+# compute derived variables
+NTASKS=`echo "${NPX}"'*'"${NPY}"'+'"${NPIO}" | bc`
+NNODES=`python -c "from math import ceil; print int(ceil(${NTASKS}.0/${TASKS_PER_NODE}))"`
+
+# cleanup
+if [ -f .jobid ]; then
+  if [ "${SCHEDULER}" = "PBS" ]; then
+    qdel -W force `cat .jobid`
+  elif [ "${SCHEDULER}" = "SLURM" ]; then
+    scancel `cat .jobid`
+  fi
+  sleep 3
+  \rm .jobid 2>/dev/null
+fi
+./clean
+
+# setup namelists
+cat > INPUT_ORG <<EOF
+ &LMGRID
+  startlat_tot  = -14.86,
+  startlon_tot  = -18.86,
+  pollat = 43.0,
+  pollon = -170.0,
+  dlon = 0.02,
+  dlat = 0.02,
+  ie_tot=1542, je_tot=1542, ke_tot=60,
+ /END
+ &RUNCTL
+  dt = 20,
+  hstart=0.0,
+  hstop=744.0,
+  ydate_ini='YYYY070100', 
+  lreproduce = .TRUE., 
+  nprocx=${NPX}, nprocy=${NPY}, nprocio=${NPIO},
+  nboundlines = 3, 
+  hincmxt = 24.0, 
+  hincmxu = 24.0, 
+  itype_calendar = 0,    
+  lphys = .TRUE., 
+  lblock_phys=.true., nproma=-1,
+  ldiagnos = .FALSE., 
+  itype_timing = 1,  
+  ldfi = .FALSE.,    
+  ldump_ascii = .FALSE., 
+  luse_rttov = .FALSE.,
+  idbg_level = 3,
+ /END
+ &TUNING
+   rlam_mom=0.0,
+   rlam_heat=1.0,
+   rat_sea=20.0,
+   rat_lam=1.0,
+   rat_can=1.0,
+   wichfakt=0.0,
+   c_lnd=2.0,
+   c_sea=1.5,
+   c_soil=1.0,
+   pat_len=500.0,
+   z0m_dia=0.2,
+   crsmin=150.0,
+   clc_diag=0.5,
+   tur_len=150.0,
+   q_crit=1.6,
+   qc0=0.0002
+   qi0=5E-6,
+   entr_sc=5E-4,
+ /END
+EOF
+
+cat > INPUT_DIA <<EOF
+ &DIACTL
+  n0meanval = 0, nincmeanval = 1,
+  lgplong = .TRUE., lgpshort = .FALSE., lgpspec = .FALSE.,
+  n0gp = 0, hincgp = 6.0,
+  stationlist_tot= 0, 0, 46.817,  6.935, 'Payerne',
+                   0, 0, 47.483,  8.533, 'Zurich-Kloten',
+ /END
+EOF
+
+cat > INPUT_DYN <<EOF
+ &DYNCTL
+    lhp2c=.true.,
+    lspubc=.true.,                      
+      rdheight=11000.0,                 
+      nrdtau=5,                 
+    lexpl_lbc=.true.,                   
+      rlwidth=50000.0,                  
+    ldyn_bbc=.true.,                    
+    itype_bbc_w=2,                      
+    betasw=0.4,                         
+    xkd=0.1,                            
+    epsass=0.15,                        
+    lcond=.true.,                       
+    lhordiff=.true.,                    
+      itype_hdiff=2,                    
+      hd_corr_u_bd=0.75,                
+      hd_corr_t_bd=0.75,
+      hd_corr_q_bd=0.0,
+      hd_corr_p_bd=0.75,
+      hd_corr_u_in=0.4,
+      hd_corr_t_in=0.0,
+      hd_corr_q_in=0.0,
+      hd_corr_p_in=0.0,
+      hd_dhmax=250.,
+    l2tls=.true.,
+      irunge_kutta=1,
+        irk_order=3,
+        iadv_order=5,
+        itheta_adv=0,
+        ltadv_limiter=.false.,
+      y_scalar_advect = 'BOTT2_STRANG',
+      y_vert_adv_dyn='impl2',
+        ieva_order=3,
+    ldiabf_lh=.false.,
+    itype_outflow_qrsg=2,
+    itype_lbc_qrsg=1,
+ /END
+EOF
+
+cat > INPUT_PHY <<EOF
+ &PHYCTL
+  lgsp=.TRUE.,      
+      itype_gscp=4,             
+      lprogprec=.TRUE.,         
+      ldiniprec=.FALSE., 
+  lrad=.TRUE.,      
+      hincrad = 0.25,           
+  lforest=.TRUE.,       
+  ltur=.TRUE.,      
+      ninctura=1,               
+      lexpcor=.FALSE.,          
+      ltmpcor=.false.,
+      lprfcor=.false.,
+      lnonloc=.false.,
+      lcpfluc=.false.,
+      itype_turb=3,             
+      imode_turb=1,             
+      itype_tran=2,             
+      imode_tran=1,             
+      limpltkediff=.true.,      
+    itype_wcld=2,       
+      icldm_rad=4,      
+      icldm_turb=2,     
+      icldm_tran=0,     
+      itype_synd=2,     
+    lsoil=.TRUE.,       
+      lmelt=.TRUE.,             
+      lmelt_var=.TRUE.,         
+      lmulti_layer=.TRUE.,
+      itype_evsl=2,             
+      itype_trvg=2,             
+      ke_soil=9,
+      czml_soil=0.005, 0.025, 0.07, 0.16, 0.34, 0.70, 1.47, 2.86, 5.74,  11.50,
+      czbot_w_so=4.0,
+    lconv=.TRUE.,       
+      itype_conv=3,             
+      nincconv=10,              
+    lcape=.false.,              
+      lconf_avg=.true., 
+        lradtopo=.false.,       
+    lsso=.TRUE.,       
+   itype_aerosol = 2,
+   itype_albedo = 2,
+ /END
+EOF
+
+cat > INPUT_SAT <<EOF
+ &SATCTL
+   num_sensors=1,
+   sat_input_01='MSG',1,'SEVIRI',8, .TRUE., .TRUE.,.TRUE., .TRUE.,
+   nchan_input_01=1,2,3,4,5,6,7,8,
+   lcon_clw=.false.,
+ /END
+EOF
+
+cat > INPUT_IO <<EOF
+ &IOCTL
+  ldwd_grib_use=.false.,
+  yform_read='ncdf',
+  l_ke_in_gds=.TRUE.,
+  lasync_io=.TRUE.,
+  itype_gather=2,
+  ymode_read = 'r  ',
+  ymode_write = 'w b',
+  nincwait=20,
+  nmaxwait=60,
+  nvers=907,
+  ncenter=215,
+  ngribout=2,
+  nhour_restart=744,744,1,
+  ydir_restart='./output',
+  ytunit_restart='d',
+  lbdclim=.TRUE.,
+  yncglob_title = "IPCC conf Test",
+  yncglob_source = "cosmo_090213_4.14_clm_10",
+  yncglob_project_id = "",
+  yncglob_experiment_id ="Reference",
+  ncglob_realization = 1,
+ /END
+ &DATABASE
+ /END
+ &GRIBIN
+  lbdana=.FALSE.,               
+  ydirini='./input/',
+  lchkini=.TRUE.,               
+  hincbound=1.0,          
+  ydirbd='./bc/',    
+  lchkbd =.TRUE.,               
+  lan_t_s    = .FALSE.,         
+  lan_t_so0  = .TRUE.,          
+  lan_t_snow = .TRUE.,          
+  lan_t_cl   = .TRUE.,          
+  lan_w_snow = .TRUE.,          
+  lan_w_i    = .TRUE.,          
+  lan_w_cl   = .TRUE.,          
+  lan_vio3   = .TRUE.,          
+  lan_hmo3   = .TRUE.,          
+  lan_plcov  = .TRUE.,          
+  lan_lai    = .TRUE.,          
+  lan_rootdp = .TRUE.,  
+  lan_rho_snow=.TRUE.,  
+  ytunitbd='d',                 
+  lana_rho_snow = .FALSE.,      
+ /END
+ &GRIBOUT
+  ysystem='file',
+  yform_write='ncdf',
+  hcomb=0,744,1,
+  yvarml='TOT_SNOW','TOT_PREC','T_2M','T_G','ASHFL_S','ALHFL_S','TDIV_HUM','AEVAP_S', 'TWATER', 'TQV', 'TWATFLXU_AV', 'TWATFLXV_AV','TD_2M',
+  yvarpl='T','FI','RELHUM','U','V','W','QV','QC', 'QI', 'QR', 'QS', 
+  plev = 200,500,700,850,
+  yvarzl=' ',
+  lcheck=.TRUE.,
+  luvmasspoint=.FALSE.,
+  lwrite_const=.TRUE.,
+  ydir='./output/1h',
+  l_z_filter=.FALSE.,l_p_filter=.FALSE.,
+  l_fi_ps_smooth =.FALSE.,
+  ytunit='d',
+ /END
+ &GRIBOUT
+  ysystem='file',
+  yform_write='ncdf',
+  hcomb=0,744,1,
+  yvarml='T','W','QV','P',
+  yvarzl=' ',
+  lcheck=.TRUE.,
+  luvmasspoint=.FALSE.,
+  lwrite_const=.TRUE.,
+  ydir='./output/1h_second',
+  l_z_filter=.FALSE.,l_p_filter=.FALSE.,
+  l_fi_ps_smooth =.FALSE.,
+  ytunit='d',
+ /END
+ &GRIBOUT
+  ysystem='file',
+  yform_write='ncdf',
+  hcomb=0,744,1,
+  yvarml='FI','U','V','W',
+  yvarzl=' ',
+  lcheck=.TRUE.,
+  luvmasspoint=.FALSE.,
+  lwrite_const=.TRUE.,
+  ydir='./output/1h_third/',
+  l_z_filter=.FALSE.,l_p_filter=.FALSE.,
+  l_fi_ps_smooth =.FALSE.,
+  ytunit='d',
+ /END
+ &GRIBOUT
+  ysystem='file',
+  yform_write='ncdf',
+  hcomb=0,744,24,
+  yvarml='W_SO','W_SNOW','TMIN_2M','TMAX_2M', 'RUNOFF_S', 'RUNOFF_G',
+  yvarpl=' ',
+  yvarzl=' ',
+  lcheck=.TRUE.,
+  luvmasspoint=.FALSE.,
+  lwrite_const=.TRUE.,
+  ydir='./output/24h',
+  l_z_filter=.FALSE.,l_p_filter=.FALSE.,
+  l_fi_ps_smooth =.FALSE.,
+  ytunit='d',
+ /END
+EOF
+
+
+cat > job <<EOF_job_SLURM
+#!/bin/tcsh
+#SBATCH --job-name=lm_f
+#SBATCH --output=job.out
+#SBATCH --nodes=${NNODES}
+#SBATCH --ntasks-per-node=${TASKS_PER_NODE}
+#SBATCH --partition=${QUEUE}
+#SBATCH --time=24:00:00
+#SBATCH --account=${ACCOUNT}
+EOF_job_SLURM
+  if [[ $HOST == daint* ]]; then
+    sed -i '/account=/a\
+#SBATCH --constraint=gpu\
+module load daint-gpu\
+setenv CRAY_CUDA_MPS 1' job
+  elif [ "${GPUS_PER_NODE}" -gt 0 ] ; then
+    sed -i '/account=/a\
+#SBATCH --gres=gpu:'${GPUS_PER_NODE} job
+  fi
+
+# rest of job (actual work)
+cat >> job <<EOF_job
+
+# Initialization
+set verbose
+set echo
+
+# set environmental parameters
+setenv OMP_NUM_THREADS 1
+setenv COSMO_NPROC_NODEVICE ${NPIO_LMF}
+setenv MALLOC_MMAP_MAX_ 0
+setenv MALLOC_TRIM_THRESHOLD_ 536870912
+setenv MV2_ENABLE_AFFINITY 0
+setenv MV2_USE_CUDA 1
+setenv MPICH_RDMA_ENABLED_CUDA 1
+setenv MPICH_G2G_PIPELINE 256
+setenv CRAY_CUDA_PROXY 0
+setenv CUDA_VA_RESERVATION_CHUNK_SIZE 4294967296
+
+#Replace soil moisture field
+module load NCO
+module load PyExtensions/3.5-CrayGNU-17.08 
+module load netcdf-python/1.2.9-CrayGNU-17.08-python-3
+
+ncap2 -O -s "W_SO=0.7*W_SO" ../input/laf2006070100.nc ./input/W_SO_2006070100.nc 
+ncks -v W_SO ./input/W_SO_2006070100.nc -A ./input/laf2006070100.nc
+
+
+# cleanup
+./clean
+
+# echo date
+date
+
+# Run LM in case directory
+${RUNCMD} -u -n ${NTASKS} ${EXE}
+
+# echo date
+date
+
+# do postprocessing
+cd ./output/
+../../bin/grc
+cd -
+
+# remove job tag (if present)
+\rm -f .jobid >&/dev/null
+
+# done
+EOF_job
+
+# clean away old *.out files
+\rm -f *.out 2>/dev/null
+
+# submit job
+jobid=`sbatch job | sed 's/Submitted batch job //g'`
+
+if [ $? -eq 0 -a -n "${jobid}" ]; then
+  echo "${jobid}" > .jobid
+  echo "${jobid}"
+else
+  exit 1
+fi
+

@@ -1,0 +1,7 @@
+ &DIACTL
+  n0meanval = 0, nincmeanval = 1,
+  lgplong = .TRUE., lgpshort = .FALSE., lgpspec = .FALSE.,
+  n0gp = 0, hincgp = 6.0,
+  stationlist_tot= 0, 0, 46.817,  6.935, 'Payerne',
+                   0, 0, 47.483,  8.533, 'Zurich-Kloten',
+ /END

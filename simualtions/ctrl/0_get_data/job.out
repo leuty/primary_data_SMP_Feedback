@@ -1,0 +1,41 @@
+sending incremental file list
+extp2_EUROPE_MCH_12km.nc
+
+sent 265407782 bytes  received 31 bytes  106163125.20 bytes/sec
+total size is 265375280  speedup is 1.00
+sending incremental file list
+extpar_2km_europe.nc
+
+sent 2102138075 bytes  received 31 bytes  127402309.45 bytes/sec
+total size is 2101881392  speedup is 1.00
+sending incremental file list
+lffd1999050100.nc
+
+sent 16174347 bytes  received 31 bytes  10782918.67 bytes/sec
+total size is 16172276  speedup is 1.00
+sending incremental file list
+lffd1999050100.nc
+
+sent 294910131 bytes  received 31 bytes  117964064.80 bytes/sec
+total size is 294874040  speedup is 1.00
+sending incremental file list
+lffd2000050100.nc
+
+sent 16174347 bytes  received 31 bytes  32348756.00 bytes/sec
+total size is 16172276  speedup is 1.00
+sending incremental file list
+lffd2000050100.nc
+
+sent 294910131 bytes  received 31 bytes  117964064.80 bytes/sec
+total size is 294874040  speedup is 1.00
+sending incremental file list
+lffd2001050100.nc
+
+sent 16174347 bytes  received 31 bytes  32348756.00 bytes/sec
+total size is 16172276  speedup is 1.00
+sending incremental file list
+lffd2001050100.nc
+
+sent 294910131 bytes  received 31 bytes  84260046.29 bytes/sec
+total size is 294874040  speedup is 1.00
+slurmstepd: error: *** JOB 6069946 ON nordend03 CANCELLED AT 2018-02-22T14:43:24 DUE TO TIME LIMIT ***

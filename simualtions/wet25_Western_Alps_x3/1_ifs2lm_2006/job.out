@@ -1,0 +1,1232 @@
+daint-gpu(31):ERROR:105: Unable to locate a modulefile for 'craype-haswell'
+set echo
+
+
+setenv OMP_NUM_THREADS 1
+setenv OMP_NUM_THREADS 1
+setenv MALLOC_MMAP_MAX_ 0
+setenv MALLOC_MMAP_MAX_ 0
+setenv MALLOC_TRIM_THRESHOLD_ 536870912
+setenv MALLOC_TRIM_THRESHOLD_ 536870912
+setenv MPICH_RDMA_ENABLED_CUDA 0
+setenv MPICH_RDMA_ENABLED_CUDA 0
+setenv MV2_USE_CUDA 0
+setenv MV2_USE_CUDA 0
+
+
+./clean
+./clean
+
+
+date
+date
+Thu Aug 16 11:31:30 CEST 2018
+
+
+srun -n 22 ./int2lm
+srun -n 22 ./int2lm
+   SETUP OF INT2LM
+     INITIALIZATIONS 
+     INPUT OF THE NAMELISTS
+  *** NOTE: Old 10 digit date format is used for output files of INT2LM
+   *** specifications of input soil main levels *** 
+   *** from Namelist INPUT are used       *** 
+   *** specifications of LM soil main levels *** 
+   *** from Namelist INPUT are used          *** 
+     GRID ORGANIZATION
+ OPEN: ncdf-file: ./input/cas2006070100.nc
+ CLOSING ncdf FILE
+     MEMORY ALLOCATION
+ 
+ ==== Code information used to build this binary ====
+ Binary name ....: int2lm
+ 
+ Library name ......: int2lm1.14.1
+ Tag name ..........: (missing)
+ Checkin-Date ......: (missing)
+ Code is modified ..: unknown
+ Compile-Date ......: Wed Jan  4 13:09:53 CET 2017
+ Compiled by .......: luethi
+ 
+ Current start time : 2018-08-16 11:31
+ Running on nodes ..: 
+ Data decomposition : 
+ ==== End of code information ====
+ 
+ OPEN: ncdf-file: ./extp2_EUROPE_MCH_12km.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/laf2006070100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070106.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070106.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070112.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070112.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070118.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070118.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070200.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070200.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070206.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070206.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070212.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070212.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070218.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070218.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070300.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070300.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070306.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070306.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070312.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070312.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070318.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070318.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070400.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070400.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070406.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070406.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070412.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070412.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070418.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070418.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070500.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070500.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070506.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070506.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070512.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070512.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070518.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070518.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070600.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070600.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070606.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070606.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070612.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070612.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070618.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070618.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070700.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070700.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070706.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070706.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070712.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070712.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070718.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070718.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070800.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070800.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070806.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070806.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070812.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070812.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070818.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070818.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070900.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070900.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070906.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070906.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070912.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070912.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006070918.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006070918.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071000.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071000.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071006.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071006.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071012.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071012.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071018.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071018.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071106.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071106.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071112.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071112.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071118.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071118.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071200.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071200.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071206.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071206.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071212.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071212.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071218.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071218.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071300.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071300.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071306.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071306.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071312.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071312.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071318.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071318.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071400.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071400.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071406.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071406.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071412.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071412.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071418.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071418.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071500.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071500.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071506.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071506.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071512.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071512.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071518.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071518.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071600.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071600.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071606.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071606.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071612.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071612.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071618.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071618.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071700.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071700.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071706.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071706.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071712.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071712.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071718.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071718.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071800.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071800.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071806.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071806.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071812.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071812.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071818.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071818.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071900.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071900.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071906.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071906.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071912.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071912.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006071918.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006071918.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072000.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072000.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072006.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072006.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072012.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072012.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072018.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072018.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072106.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072106.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072112.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072112.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072118.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072118.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072200.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072200.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072206.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072206.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072212.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072212.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072218.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072218.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072300.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072300.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072306.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072306.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072312.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072312.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072318.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072318.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072400.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072400.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072406.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072406.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072412.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072412.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072418.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072418.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072500.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072500.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072506.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072506.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072512.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072512.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072518.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072518.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072600.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072600.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072606.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072606.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072612.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072612.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072618.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072618.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072700.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072700.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072706.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072706.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072712.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072712.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072718.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072718.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072800.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072800.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072806.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072806.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072812.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072812.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072818.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072818.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072900.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072900.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072906.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072906.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072912.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072912.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006072918.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006072918.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073000.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073000.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073006.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073006.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073012.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073012.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073018.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073018.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073100.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073106.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073106.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073112.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073112.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006073118.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006073118.nc
+ CLOSING ncdf FILE
+ OPEN: ncdf-file: ./input/cas2006080100.nc
+ CLOSING ncdf FILE
+  *** Control Geopotential has been calculated ***
+  *** FI is marked as being read               ***
+  *** T(ke) is used for T_S ***
+  Length of February:          28
+  Length of February:          28
+ OPEN: ncdf-file: ./output/lbfd2006080100.nc
+ CLOSING ncdf FILE
+ CLEANUP
+
+
+date
+date
+Thu Aug 16 11:37:16 CEST 2018
+
+
+cd ./output/
+cd ./output/
+../../bin/grc
+../../bin/grc
+../../bin/grc: Command not found.
+cd -
+cd -
+
+
+\rm -f .jobid > & /dev/null
+rm -f .jobid
+
+
+ 
+Batch Job Summary Report for Job "ifs2lm" (9056481) on daint
+-----------------------------------------------------------------------------------------------------
+             Submit            Eligible               Start                 End    Elapsed  Timelimit 
+------------------- ------------------- ------------------- ------------------- ---------- ---------- 
+2018-08-16T11:30:56 2018-08-16T11:30:56 2018-08-16T11:31:22 2018-08-16T11:37:16   00:05:54   00:20:00 
+-----------------------------------------------------------------------------------------------------
+Username    Account     Partition   NNodes   Energy
+----------  ----------  ----------  ------  --------------
+davidle     pr04        normal           2  116.63K joules
+ 
+This job did not utilize any GPUs
+ 
+----------------------------------------------------------
+Scratch File System        Files       Quota
+--------------------  ----------  ----------
+/scratch/snx3000          204079     1000000
+ 

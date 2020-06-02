@@ -1,0 +1,6 @@
+Check the external parameters from CM   
+    File:   ./input/cas2006070100.nc
+    ie_in_tot  =  512  je_in_tot =  256
+    
+   var        ee  lev        min    imin jmin               max    imax jmax              mean
+  

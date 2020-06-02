@@ -1,0 +1,50 @@
+#!/bin/bash
+
+module load daint-gpu
+
+ext_data=/project/pr04/extpar-HPC
+bd_data=/project/pr04/ERAinterim
+w_so_dir=$PROJECT/results_clim
+
+cat > job <<EOF_job
+#!/bin/bash -l
+#
+#SBATCH --job-name=get_data
+#SBATCH --output=job.out
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=1
+#SBATCH --partition=normal
+module unload xalt
+
+if [ ! -d ../input/output/ifs2lm ] ; then mkdir -p ../input/ifs2lm ;fi
+find $bd_data/2006/ERAINT_2006_{05..08}.tar.gz -exec tar --transform 's/caf/cas/' -xf {} -C input \;
+
+cp $w_so_dir/lm_c/24h/2006/lffd2006050100.nc ../input/lffd2006050100_lm_c.nc
+cp $w_so_dir/lm_f/24h/2006/lffd2006050100.nc ../input/lffd2006050100_lm_f.nc
+cp $ext_data/extp2_EUROPE_MCH_12km.nc ../1_ifs2lm/
+cp $ext_data/extpar_2km_europe.nc ../3_lm2lm/
+
+EOF_job
+
+#On daint use xfer queue
+if [[ $HOST == daint* ]]; then
+  sed -i '/#SBATCH --partition=normal/c\#SBATCH  --partition=xfer' job
+fi
+
+# clean away old *.out files
+\rm -f *.out 2>/dev/null
+
+# submit job
+if [ -z "${WAITFORJOB}" ]; then
+  jobid=`sbatch job | sed 's/Submitted batch job //g'`
+else
+  jobid=`sbatch --dependency=afterok:${WAITFORJOB} job | sed 's/Submitted batch job //g'`
+fi
+
+if [ $? -eq 0 -a -n "${jobid}" ]; then
+  echo "${jobid}" > .jobid
+  echo "${jobid}"
+else
+  exit 1
+fi
+

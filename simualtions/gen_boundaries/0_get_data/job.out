@@ -1,0 +1,2 @@
+slurmstepd: error: (task_cray.c: 726: _get_numa_nodes) Failed to open file /dev/cpuset/slurm/uid_22349/job_3611657/step_batch/mems: No such file or directory
+slurmstepd: error: (task_cray.c: 517: task_p_post_step) get_numa_nodes failed. Return code: -1

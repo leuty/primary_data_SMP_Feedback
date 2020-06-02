@@ -1,0 +1,6 @@
+Check the external parameters from COSMO
+    File:   ./input/lffd2006070100c.nc
+    ie_in_tot  =  361  je_in_tot =  361
+    
+   var        ee  lev        min    imin jmin               max    imax jmax              mean
+  

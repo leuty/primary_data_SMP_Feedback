@@ -1,0 +1,23 @@
+#!/bin/bash -l
+#
+#SBATCH --job-name=get_data
+#SBATCH --output=job.out
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=1
+#SBATCH  --partition=xfer
+module unload xalt
+
+if [ ! -d ../../input/ ] ; then mkdir ../../input/   ;fi
+
+rsync -av $ext_data/extp2_EUROPE_MCH_12km.nc ../../bin/
+rsync -av $ext_data/extpar_2km_europe.nc ../../bin/
+
+for YYYY in {1999..2008}; do
+  find $bd_data/${YYYY}/ERAINT_${YYYY}_{05..08}.tar.gz -exec tar --transform 's/caf/cas/' -xf {} -C ../../input/  \;
+
+  rsync -av $w_so_dir/lm_c/24h/${YYYY}/lffd${YYYY}050100.nc ../../input/lffd${YYYY}050100_lm_c.nc
+  rsync -av $w_so_dir/lm_f/24h/${YYYY}/lffd${YYYY}050100.nc ../../input/lffd${YYYY}050100_lm_f.nc
+
+done
+
+

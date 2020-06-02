@@ -1,0 +1,54 @@
+#!/bin/tcsh
+#SBATCH --job-name=lm_c
+#SBATCH --output=job.out
+##SBATCH --nodes=144                     #DL: COMMENT IN ONCE IN GPU
+##SBATCH --ntasks-per-node=1   #DL: COMMENT IN ONCE IN GPU
+#SBATCH --ntasks=144                     #DL: REMOVE ONCE RUN ON GPU
+#SBATCH --partition=normal
+#SBATCH --time=24:00:00
+#SBATCH --account=pr04
+#SBATCH --constraint=gpu
+module load daint-gpu
+setenv CRAY_CUDA_MPS 0
+#SBATCH --hint=nomultithread
+
+# Initialization
+set verbose
+set echo
+
+# set environmental parameters
+setenv OMP_NUM_THREADS 1
+setenv COSMO_NPROC_NODEVICE 0
+setenv MALLOC_MMAP_MAX_ 0
+setenv MALLOC_TRIM_THRESHOLD_ 536870912
+setenv MV2_ENABLE_AFFINITY 0
+
+#Replace soil moisture field
+module load NCO
+module load PyExtensions/3.5-CrayGNU-17.08 
+module load netcdf-python/1.2.9-CrayGNU-17.08-python-3
+
+python3 ~/analysis_soilmoistre_pertubation_10a/perturb_soil-water_potential_local.py ../../input/lffd2006070100_lm_c.nc ~/postproc_data/SOILTYP_lm_c.nc ./input/W_SO_2006070100.nc 0.3 ~/postproc_data/fr_land_WestAlps_lm_c.nc
+ncks -v W_SO ./input/W_SO_2006070100.nc -A ./input/laf2006070100.nc
+
+# cleanup
+./clean
+
+# echo date
+date
+
+# Run LM in case directory
+srun -u -n 144 ./lm_f90
+
+# echo date
+date
+
+# do postprocessing
+cd ./output/
+../../bin/grc
+cd -
+
+# remove job tag (if present)
+\rm -f .jobid >&/dev/null
+
+# done
