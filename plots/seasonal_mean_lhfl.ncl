@@ -92,6 +92,7 @@ wks_type@wkWidth = 3600
 wks_type@wkHeight = 3600
 wks = gsn_open_wks("png", filename )
 gsn_define_colormap(wks,"MPL_viridis")
+gsn_reverse_colormap(wks)
 
 ;=============================================================
 plot = gsn_csm_contour_map(wks,p(:,:),res)

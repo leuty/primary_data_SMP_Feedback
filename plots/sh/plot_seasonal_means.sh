@@ -3,34 +3,20 @@
 . /etc/bash.bashrc
 module load daint-gpu
 module load NCL 
+module load CDO
  
 
-shdir=/users/davidle/analysis_soilmoistre_pertubation_10a/ncl
-plotdir=/project/pr04/davidle/results_soil-moisture_pertubation/analysis/plots
+shdir=/users/davidle/primary_data_SMP_Feedback/plots/
+plotdir=/project/pr94/davidle/results_soil-moisture_pertubation/analysis/plots
 if [ ! -d $plotdir ]; then mkdir -p $plotdir; fi
 pr_region=(ANALYSIS BI IP FR ME AL MD EA)
 
-#Precipitation
-cat >> job <<EOF_job
-#!/usr/local/bin/bash -l
-#SBATCH --job-name="ncl"
-#SBATCH --time=01:20:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --output=dcycle.out
-#SBATCH --error=dcycle.err
-#SBATCH --partition=normal
-#SBATCH --constraint=gpu
-#SBATCH --account=pr04
-
-EOF_job
-
-cdata=$PROJECT/results_clim/lm_c/lffd1993110100c.nc
 
 #Precip
 #--------------
 for LM_MODEL in lm_c lm_f; do
     datadir=$PROJECT/results_soil-moisture_pertubation/analysis/ctrl/analysis/${LM_MODEL}
+    cdata=$PROJECT/results_clim/lm_c/lffd1993110100c.nc
 
     data=$datadir/precip_seasmean_jja.nc
     plotname=$plotdir/$LM_MODEL/seasmean_hourly_precip_amount
@@ -46,6 +32,27 @@ for LM_MODEL in lm_c lm_f; do
     plotname=$plotdir/$LM_MODEL/seasmean_p99
     $shdir/sh/pass_args.sh $shdir/precip_seasmean/p99_seasmean.ncl $data $cdata $plotname 
 
+    #Latent Heatflux
+    cdata=$PROJECT/results_clim/${LM_MODEL}/const.nc
+    data=$datadir/1h_seasmean_jja.nc
+    plotname=$plotdir/$LM_MODEL/seasmean_lhflx
+    $shdir/sh/pass_args.sh $shdir/seasonal_mean_lhfl.ncl $data $cdata $plotname 
+
+    maskfile=/users/davidle/postproc_data/${LM_MODEL}_PRUDENCE_MASKS_LAND.nc
+    echo "LHFLX mean" $LM_MODEL
+    echo $( cdo -s output -fldmean -selvar,ALHFL_S -ifthen -selvar,FR_LAND $maskfile -ifthen -selvar,MASK_ANALYSIS $maskfile $data )
+    cdo -s ifthen -selvar,FR_LAND $maskfile -ifthen -selvar,MASK_ANALYSIS $maskfile -selvar,ALHFL_S,ASHFL_S -cat $datadir/1h_seasmean_????_jja.nc $SCRATCH/1h_seasmean_1999-2008_jja.nc
+    echo $( cdo -s output -timstd -fldmean -selvar,ALHFL_S $SCRATCH/1h_seasmean_1999-2008_jja.nc )
+
+    #Sensible Heatflux
+    cdata=$PROJECT/results_clim/${LM_MODEL}/const.nc
+    data=$datadir/1h_seasmean_jja.nc
+    plotname=$plotdir/$LM_MODEL/seasmean_shflx
+    $shdir/sh/pass_args.sh $shdir/seasonal_mean_shfl.ncl $data $cdata $plotname 
+
+    echo "SHFLX mean" $LM_MODEL
+    echo $( cdo -s output -fldmean -selvar,ASHFL_S -ifthen -selvar,FR_LAND $maskfile -ifthen -selvar,MASK_ANALYSIS $maskfile $data )
+    echo $( cdo -s output -timstd -fldmean -selvar,ASHFL_S $SCRATCH/1h_seasmean_1999-2008_jja.nc )
 done
 
 #Convective Precip
@@ -70,8 +77,6 @@ for LM_MODEL in lm_c lm_f; do
 done
 
 
-# clean away old *.out files
-#sbatch job
 
 # clean away old *.out files
 rm -f job 2>/dev/null
