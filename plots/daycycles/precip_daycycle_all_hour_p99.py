@@ -27,10 +27,10 @@ class Experiment:
     self.data=np.vstack((self.data,self.data[0,:]))
 
   def min(self):
-    return np.amin(self.data, axis=1)
+    return np.amin(self.data, axis=0)
 
   def max(self):
-    return np.amax(self.data, axis=1)
+    return np.amax(self.data, axis=0)
 
   def mean(self):
     return np.mean(self.data, axis=1)
@@ -144,4 +144,13 @@ plt.text(0.05, 0.95,prudence_region , transform=ax.transAxes, fontsize=20,
         verticalalignment='bottom')
 
 plt.savefig(plotfile+'.pdf', bbox_inches='tight')
+
+#Difference in diurnal maxima
+dP = np.zeros((100))
+for i in range(10):
+    for j in range(10):
+        dP[i*j] =  wet25.max()[i] - dry25.max()[j]
+print("mean" , np.max(wet25.mean()) - np.max(dry25.mean()))
+print("std" , np.std(dP))
+
 
