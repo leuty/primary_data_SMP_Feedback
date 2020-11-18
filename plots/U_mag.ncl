@@ -62,24 +62,20 @@ fres                      = res
 ;Define the underlying map
 ;-------------------------
 tres@mpProjection           = "Mercator"
-;tres@mpOutlineBoundarySets  = "National"
 tres@mpDataBaseVersion      = "HighRes"
 tres@mpDataBaseVersion      = "Ncarg4_1"
 tres@mpDataSetName          = "Earth..4"
 tres@pmTickMarkDisplayMode  = "never"
 tres@mpLabelsOn             = False
-tres@mpFillOn               = True
 tres@mpOutlineOn            = True
 tres@mpOutlineDrawOrder     = "PostDraw"
-tres@mpFillDrawOrder        = "PreDraw"
-tres@mpOceanFillColor       = "grey78"
-tres@mpLandFillColor        = "white"
+tres@mpGeophysicalLineThicknessF = 4
+
 
 ;Rotate pole
 ;-----------
 tres@mpCenterLonF            = pole_lon + 180.
 tres@mpCenterLatF            = 90. - pole_lat
-;tres@tfDoNDCOverlay          = False
 
 ;2km analysis domain
 tres@mpLimitMode            = "Corners"
@@ -109,19 +105,14 @@ tres@cnMonoLineThickness    = True
 res@cnFillOn                = True
 res@cnFillMode              = "CellFill"
 res@cnLinesOn               = False
+res@cnFillOpacityF         = 0.7
 
-;res@lbLabelBarOn           = False
 res@cnInfoLabelOn          = False
 res@cnLineLabelsOn         = False
-;res@lbOrientation          = "vertical"
 res@gsnSpreadColors        = True
 
 wks = gsn_open_wks("png", filename )
 gsn_define_colormap(wks,"MPL_viridis")
-;gsn_reverse_colormap(wks)
-res@cnFillOpacityF         = 0.80
-
-
 
 res@cnLevelSelectionMode   = "ManualLevels"
 res@cnMinLevelValF         = 1
@@ -132,13 +123,12 @@ res@cnLevelSpacingF        = 1
 ;---------------------
 
 ures@vcGlyphStyle              = "LineArrow"
-;ures@vcGlyphStyle              = "CurlyVector"
 ures@vcRefMagnitudeF           = 10.0
 ures@vcRefLengthF              = 0.07
 ures@vcLineArrowColor          = "white"
 ures@vcFillArrowsOn            = True
 ures@vcFillArrowFillColor      = "white"
-ures@vcGlyphOpacityF           = 0.4
+ures@vcGlyphOpacityF           = 0.7
 ures@vcMinDistanceF            = 0.04
 ures@vcLineArrowThicknessF     = 5.0
 ures@vcLineArrowHeadMinSizeF    = 0.004
